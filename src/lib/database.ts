@@ -5,6 +5,7 @@ import {
     MYSQL_ROOT_PASSWORD,
     MYSQL_DATABASE,
 } from './config';
+import * as path from 'path';
 
 let retries = 0;
 const createDatabaseConnection = async () => {
@@ -19,7 +20,7 @@ const createDatabaseConnection = async () => {
             database: MYSQL_DATABASE,
             username: MYSQL_USERNAME,
             password: MYSQL_ROOT_PASSWORD,
-            entities: [`${__dirname}/../entities/**/*{.js,.ts}`],
+            entities: [path.join(__dirname, '/../entities/**/*{.js,.ts}')],
             synchronize: true,
         });
     } catch {
